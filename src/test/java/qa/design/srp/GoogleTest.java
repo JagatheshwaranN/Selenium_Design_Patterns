@@ -22,7 +22,6 @@ public class GoogleTest extends BaseTest {
 
     @Test(dataProvider = "fetchData")
     public void googleSearchFlowTest(String keyword, int index){
-
         googleHomePage.navigateTo();
         Assert.assertTrue(googleHomePage.getSearchWidget().isDisplayed());
         googleHomePage.getSearchWidget().type(keyword);
@@ -34,7 +33,6 @@ public class GoogleTest extends BaseTest {
         googleResultPage.getSearchSuggestion().clickOnSuggestion(index);
         googleResultPage.getNavigationBar().navigateToNews();
         System.out.println(googleResultPage.getResultStat().getResultStatistics());
-
     }
 
     @DataProvider
