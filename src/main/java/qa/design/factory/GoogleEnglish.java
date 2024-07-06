@@ -1,5 +1,6 @@
 package qa.design.factory;
 
+import com.google.common.util.concurrent.Uninterruptibles;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,8 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public class GoogleEnglish extends GooglePage {
+class GoogleEnglish extends GooglePage {
 
 
     protected final WebDriver driver;
@@ -18,7 +20,7 @@ public class GoogleEnglish extends GooglePage {
     @FindBy(name = "q")
     private WebElement searchBar;
 
-    @FindBy(name = "btnk")
+    @FindBy(name = "btnK")
     private List<WebElement> searchButton;
 
     @FindBy(css = "div[class='yuRUbf'] h3")
@@ -37,7 +39,11 @@ public class GoogleEnglish extends GooglePage {
 
     @Override
     public void search(String keyword) {
-        this.searchBar.sendKeys(keyword);
+        //this.searchBar.sendKeys(keyword);
+        for(char ch : keyword.toCharArray()){
+            Uninterruptibles.sleepUninterruptibly(10, TimeUnit.MILLISECONDS);
+            this.searchBar.sendKeys(ch+"");
+        }
         this.searchButton.stream()
                 .filter(ele -> ele.isDisplayed() && ele.isEnabled())
                 .findFirst()

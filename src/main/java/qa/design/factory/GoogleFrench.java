@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-public class GoogleFrench extends GoogleEnglish {
+class GoogleFrench extends GoogleEnglish {
 
 
     @FindBy(css = "div#gws-output-pages-elements-homepage_additional_languages__als a")
