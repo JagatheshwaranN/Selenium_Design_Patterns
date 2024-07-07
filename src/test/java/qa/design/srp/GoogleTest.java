@@ -5,19 +5,19 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import qa.design.srp.home.GoogleHomePage;
-import qa.design.srp.result.GoogleResult;
+import qa.design.srp.result.GoogleResultPage;
 import qa.design.test.BaseTest;
 
 public class GoogleTest extends BaseTest {
 
     private GoogleHomePage googleHomePage;
 
-    private GoogleResult googleResultPage;
+    private GoogleResultPage googleResultPage;
 
     @BeforeTest
     public void setUpPages() {
         this.googleHomePage = new GoogleHomePage(driver);
-        this.googleResultPage = new GoogleResult(driver);
+        this.googleResultPage = new GoogleResultPage(driver);
     }
 
     @Test(dataProvider = "fetchData")
@@ -46,6 +46,5 @@ public class GoogleTest extends BaseTest {
                 }
         };
     }
-
 
 }

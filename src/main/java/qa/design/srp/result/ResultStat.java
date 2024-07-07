@@ -19,7 +19,7 @@ public class ResultStat extends DisplayComponent {
 
     public String getResultStatistics(){
         displayStat();
-        return  this.resultStat.getText();
+        return this.resultStat.getText();
     }
 
     private void displayStat(){

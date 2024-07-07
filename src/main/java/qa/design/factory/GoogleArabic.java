@@ -8,7 +8,6 @@ import java.util.List;
 
 class GoogleArabic extends GoogleEnglish {
 
-
     @FindBy(css = "div#gws-output-pages-elements-homepage_additional_languages__als a")
     private List<WebElement> languageSelection;
 

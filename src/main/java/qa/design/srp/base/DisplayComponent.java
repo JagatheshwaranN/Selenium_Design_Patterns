@@ -16,4 +16,5 @@ public abstract class DisplayComponent {
     }
 
     public abstract boolean isDisplayed();
+
 }

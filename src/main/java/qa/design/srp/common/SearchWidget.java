@@ -23,7 +23,6 @@ public class SearchWidget extends DisplayComponent {
             Uninterruptibles.sleepUninterruptibly(10, TimeUnit.MILLISECONDS);
             this.searchBox.sendKeys(ch+"");
         }
-
     }
 
     @Override

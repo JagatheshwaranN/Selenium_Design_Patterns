@@ -13,8 +13,8 @@ import java.util.concurrent.TimeUnit;
 
 class GoogleEnglish extends GooglePage {
 
-
     protected final WebDriver driver;
+
     protected final WebDriverWait wait;
 
     @FindBy(name = "q")

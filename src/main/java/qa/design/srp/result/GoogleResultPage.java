@@ -5,7 +5,7 @@ import org.openqa.selenium.support.PageFactory;
 import qa.design.srp.common.SearchSuggestion;
 import qa.design.srp.common.SearchWidget;
 
-public class GoogleResult {
+public class GoogleResultPage {
 
     private final SearchWidget searchWidget;
 
@@ -15,11 +15,11 @@ public class GoogleResult {
 
     private final ResultStat resultStat;
 
-    public GoogleResult(final WebDriver driver) {
-            this.searchWidget = PageFactory.initElements(driver, SearchWidget.class);
-            this.searchSuggestion = PageFactory.initElements(driver, SearchSuggestion.class);
-            this.navigationBar = PageFactory.initElements(driver, NavigationBar.class);
-            this.resultStat = PageFactory.initElements(driver, ResultStat.class);
+    public GoogleResultPage(final WebDriver driver) {
+        this.searchWidget = PageFactory.initElements(driver, SearchWidget.class);
+        this.searchSuggestion = PageFactory.initElements(driver, SearchSuggestion.class);
+        this.navigationBar = PageFactory.initElements(driver, NavigationBar.class);
+        this.resultStat = PageFactory.initElements(driver, ResultStat.class);
     }
 
     public SearchWidget getSearchWidget() {
