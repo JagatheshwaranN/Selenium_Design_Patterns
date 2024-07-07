@@ -1,65 +1,47 @@
 package qa.design.template;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-import java.util.List;
+import qa.design.template.pages.AmazonProductPage;
+import qa.design.template.pages.AmazonResultPage;
+import qa.design.template.pages.AmazonSearchPage;
 
 public class Amazon extends ShoppingTemplate {
 
-    private final WebDriver driver;
-
-    private final WebDriverWait wait;
+    protected final WebDriver driver;
 
     private final String product;
 
-    @FindBy(id="twotabsearchtextbox")
-    private WebElement searchBox;
-
-    @FindBy(id="nav-search-submit-button")
-    private WebElement searchButton;
-
-    @FindBy(css="span .a-size-medium")
-    private List<WebElement> searchItem;
-
-    @FindBy(id="productTitle")
-    private WebElement itemTitle;
+    private final AmazonSearchPage amazonSearchPage;
+    private final AmazonResultPage amazonResultPage;
+    private final AmazonProductPage amazonProductPage;
 
     public Amazon(WebDriver driver, String product){
         this.driver = driver;
         this.product = product;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        PageFactory.initElements(driver, this);
+        this.amazonSearchPage = PageFactory.initElements(driver, AmazonSearchPage.class);
+        this.amazonResultPage = PageFactory.initElements(driver, AmazonResultPage.class);
+        this.amazonProductPage = PageFactory.initElements(driver, AmazonProductPage.class);
     }
 
     @Override
     public void launch() {
-        this.driver.get("https://www.amazon.com/");
+        this.amazonSearchPage.launch();
     }
 
     @Override
     public void searchProduct() {
-        this.searchBox.sendKeys(product);
-        this.searchButton.click();
+        this.amazonSearchPage.searchProduct(this.product);
     }
 
     @Override
     public void selectProduct() {
-        this.wait.until(driver -> this.searchItem.size() > 1);
-        this.searchItem.stream()
-                .filter(ele -> ele.isDisplayed() && ele.isEnabled())
-                .findFirst()
-                .ifPresent(WebElement::click);
+        this.amazonResultPage.selectProduct();
     }
 
     @Override
     public void checkout() {
-        this.wait.until(driver -> this.itemTitle.isDisplayed());
-        System.out.println(this.itemTitle.getText());
+        this.amazonProductPage.checkout();
     }
 
 }
