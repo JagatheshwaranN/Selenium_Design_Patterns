@@ -7,7 +7,6 @@ import java.util.Map;
 
 public class CreditCard implements PaymentMode {
 
-
     @FindBy(id = "cc")
     private WebElement cardNumber;
 

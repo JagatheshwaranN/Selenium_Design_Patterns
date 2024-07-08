@@ -8,7 +8,6 @@ import java.util.Map;
 
 public class NetBanking implements PaymentMode {
 
-
     @FindBy(id = "bank")
     private WebElement bank;
 

@@ -22,4 +22,5 @@ public class AdminProHomePageTest extends BaseTest {
                 .map(ObjectValidator::validate)
                 .forEach(Assert::assertTrue);
     }
+
 }

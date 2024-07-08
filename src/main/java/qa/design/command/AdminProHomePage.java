@@ -51,7 +51,6 @@ public class AdminProHomePage {
     @FindBy(xpath = "//h4[text()='Dissmissal Alert']//following-sibling::div[contains(@class,'alert-info')]")
     private WebElement infoAlert;
 
-
     public AdminProHomePage(final WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
