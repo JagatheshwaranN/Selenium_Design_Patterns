@@ -1,4 +1,4 @@
-package qa.design.factory;
+package qa.design.factory.google;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

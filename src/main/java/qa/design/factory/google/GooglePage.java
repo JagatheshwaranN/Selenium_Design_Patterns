@@ -1,4 +1,4 @@
-package qa.design.factory;
+package qa.design.factory.google;
 
 public abstract class GooglePage {
 
