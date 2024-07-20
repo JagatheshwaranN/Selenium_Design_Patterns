@@ -1,4 +1,4 @@
-package qa.design.strategy;
+package qa.design.strategy.payment;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

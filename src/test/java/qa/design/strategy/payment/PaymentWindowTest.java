@@ -1,4 +1,4 @@
-package qa.design.strategy;
+package qa.design.strategy.payment;
 
 import com.google.common.util.concurrent.Uninterruptibles;
 import org.testng.annotations.BeforeTest;
@@ -10,7 +10,7 @@ import qa.design.test.BaseTest;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class PaymentWindowUsingFactoryTest extends BaseTest {
+public class PaymentWindowTest extends BaseTest {
 
     private PaymentWindow paymentWindow;
 
@@ -20,10 +20,10 @@ public class PaymentWindowUsingFactoryTest extends BaseTest {
     }
 
     @Test(dataProvider = "fetchData")
-    public void paymentModeTest(String paymentMode, Map<String, String> paymentDetail) {
+    public void paymentModeTest(PaymentMode paymentMode, Map<String, String> paymentDetail) {
         this.paymentWindow.navigateTo();
         this.paymentWindow.getUserInformation().enterUserDetails("John", "Smith", "john.smith@gmail.com");
-        this.paymentWindow.setPaymentMode(PaymentModeFactory.getInstance(paymentMode));
+        this.paymentWindow.setPaymentMode(paymentMode);
         this.paymentWindow.getPaymentMode().enterPaymentDetail(paymentDetail);
         String orderNumber = this.paymentWindow.getBuyOrder().purchaseOrder();
         System.out.println("Order Number : " + orderNumber);
@@ -33,18 +33,18 @@ public class PaymentWindowUsingFactoryTest extends BaseTest {
     @DataProvider
     public Object[][] fetchData() {
         Map<String, String> creditCard = Maps.newHashMap();
-        creditCard.put("cardNumber", "987634562312");
+        creditCard.put("cardNumber", "543298871256");
         creditCard.put("cardYear", "2024");
         creditCard.put("cardPin", "2325");
 
         Map<String, String> netBanking = Maps.newHashMap();
         netBanking.put("bank", "WELLS FARGO");
-        netBanking.put("accountNumber", "987634562312");
+        netBanking.put("accountNumber", "543298871256");
         netBanking.put("accountPin", "2325");
 
         return new Object[][]{
-                {"CC", creditCard},
-                {"NB", netBanking}
+                {new CreditCard(), creditCard},
+                {new NetBanking(), netBanking}
         };
     }
 

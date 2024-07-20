@@ -1,4 +1,4 @@
-package qa.design.strategy;
+package qa.design.strategy.payment;
 
 import java.util.Map;
 
