@@ -1,4 +1,4 @@
-package qa.design.factory.driver;
+package qa.design.factory.driver.basic;
 
 
 public class DriverManagerFactory {

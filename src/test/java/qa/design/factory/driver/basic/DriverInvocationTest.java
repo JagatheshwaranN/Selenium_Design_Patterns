@@ -1,4 +1,4 @@
-package qa.design.factory.driver;
+package qa.design.factory.driver.basic;
 
 import com.google.common.util.concurrent.Uninterruptibles;
 import org.openqa.selenium.WebDriver;

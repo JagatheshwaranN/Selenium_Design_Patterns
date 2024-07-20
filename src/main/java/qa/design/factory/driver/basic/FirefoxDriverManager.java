@@ -1,16 +1,11 @@
-package qa.design.factory.driver;
+package qa.design.factory.driver.basic;
 
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxDriverService;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.GeckoDriverService;
 
-import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
-import java.util.List;
-import java.util.Map;
 
 public class FirefoxDriverManager extends DriverManager {
 

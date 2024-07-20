@@ -1,4 +1,4 @@
-package qa.design.factory.driver;
+package qa.design.factory.driver.basic;
 
 import org.openqa.selenium.WebDriver;
 
