@@ -12,7 +12,7 @@ public class ConsumerTest {
     private WebDriver driver;
 
     @BeforeTest
-    public void setDriver(){
+    public void setUp(){
         this.driver = DriverFactory.getDriver("Chrome");
         this.driver.manage().window().maximize();
     }
@@ -24,7 +24,7 @@ public class ConsumerTest {
     }
 
     @AfterTest
-    public void quitDriver(){
+    public void tearDown(){
         this.driver.quit();
     }
 

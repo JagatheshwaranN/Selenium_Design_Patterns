@@ -10,7 +10,7 @@ public class SupplierTest {
 
     @BeforeTest
     @Parameters("browser")
-    public void setDriver(@Optional("Chrome") String browser) {
+    public void setUp(@Optional("Chrome") String browser) {
         this.driver = DriverFactory.getDriver(browser);
         this.driver.manage().window().maximize();
     }
@@ -22,7 +22,7 @@ public class SupplierTest {
     }
 
     @AfterTest
-    public void quitDriver() {
+    public void tearDown() {
         this.driver.quit();
     }
 
