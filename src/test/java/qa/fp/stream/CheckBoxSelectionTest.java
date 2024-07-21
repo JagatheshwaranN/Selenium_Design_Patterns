@@ -10,7 +10,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import qa.fp.supplier.DriverFactory;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Predicate;
 
 public class CheckBoxSelectionTest {
 
@@ -34,7 +36,7 @@ public class CheckBoxSelectionTest {
                 .map(tableDefList -> tableDefList.get(3))
                 .map(tableDef -> tableDef.findElement(By.tagName("input")))
                 .forEach(WebElement::click);
-        Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
+        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
     }
 
     @DataProvider
@@ -42,6 +44,37 @@ public class CheckBoxSelectionTest {
         return new Object[]{
                 "male",
                 "female"
+        };
+    }
+
+    @Test(dataProvider = "getData")
+    public void genericCheckboxSelectionTest(Predicate<List<WebElement>> criteria) {
+        this.driver.get("https://vins-udemy.s3.amazonaws.com/java/html/java8-stream-table.html");
+        this.driver.findElements(By.tagName("tr"))
+                .stream()
+                .skip(1)
+                .map(tableRow -> tableRow.findElements(By.tagName("td")))
+                .filter(tableDefList -> tableDefList.size() == 4)
+                .filter(criteria)
+                .map(tableDefList -> tableDefList.get(3))
+                .map(tableDef -> tableDef.findElement(By.tagName("input")))
+                .forEach(WebElement::click);
+        Uninterruptibles.sleepUninterruptibly(2, TimeUnit.SECONDS);
+    }
+
+    @DataProvider
+    public Object[] getData() {
+        Predicate<List<WebElement>> maleCriteria = tableDefList -> tableDefList.get(1).getText().equalsIgnoreCase("male");
+        Predicate<List<WebElement>> femaleCriteria = tableDefList -> tableDefList.get(1).getText().equalsIgnoreCase("female");
+        Predicate<List<WebElement>> genderCriteria = maleCriteria.or(femaleCriteria);
+        Predicate<List<WebElement>> usaCriteria = tableDefList -> tableDefList.get(2).getText().equalsIgnoreCase("USA");
+        Predicate<List<WebElement>> femaleFromUSACriteria = femaleCriteria.and(usaCriteria);
+        return new Object[]{
+                maleCriteria,
+                femaleCriteria,
+                genderCriteria,
+                usaCriteria,
+                femaleFromUSACriteria
         };
     }
 
