@@ -10,9 +10,12 @@ import qa.fp.supplier.DriverFactory;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("ALL")
 public class BrokenLinkTest {
 
     static class LinkUtil {
@@ -71,6 +74,29 @@ public class BrokenLinkTest {
                 .filter(src -> LinkUtil.getResponseCode(src) != 200)
                         .toList();
         Assert.assertEquals(list.size(), 0, list.toString());
+    }
+
+    @Test
+    public void brokenLinkCollectGroupByTest() {
+        this.driver.get("https://the-internet.herokuapp.com/broken_images");
+        Map<Integer, List<String>> groupByLinks = this.driver.findElements(By.xpath("//*[@src]"))
+                .stream()
+                .map(element -> element.getAttribute("src"))
+                .collect(Collectors.groupingBy(src -> LinkUtil.getResponseCode(src)));
+        System.out.println(groupByLinks);
+    }
+
+    @Test
+    public void brokenLinkParallelCollectTest() {
+        this.driver.get("https://www.google.com/");
+        System.out.println("Start Time :: " + LocalDateTime.now());
+        List<String> list = this.driver.findElements(By.xpath("//*[@href]"))
+                .stream()
+                .parallel()
+                .map(element -> element.getAttribute("href"))
+                .filter(src -> LinkUtil.getResponseCode(src) != 200)
+                .toList();
+        System.out.println("End Time :: " + LocalDateTime.now());
     }
 
     @AfterTest
