@@ -35,10 +35,11 @@ public class MinPriceSelectionTest {
     @Test
     public void minPriceCheckBoxSelectionTest() {
         this.driver.get("https://vins-udemy.s3.amazonaws.com/java/html/java8-stream-table-price.html");
-        Optional<List<WebElement>> minPriceRow = this.driver.findElements(By.cssSelector("table#prods tr")).stream()
+        Optional<List<WebElement>> minPriceRow = this.driver.findElements(By.cssSelector("table#prods tr"))
+                .stream()
                 .skip(1)
                 .map(tableRow -> tableRow.findElements(By.tagName("td")))
-                .min(Comparator.comparing(tableDefList -> tableDefList.get(2).getText()));
+                .min(Comparator.comparing(tableDef -> tableDef.get(2).getText()));
         minPriceRow.ifPresent(element -> element.get(3).findElement(By.tagName("input")).click());
         this.driver.findElement(By.id("result")).click();
         String status = this.driver.findElement(By.id("status")).getText();
