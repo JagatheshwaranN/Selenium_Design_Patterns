@@ -5,7 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -16,15 +15,13 @@ public class DriverFactory {
     private static final Supplier<WebDriver> firefoxDriver = FirefoxDriver::new;
     private static final Supplier<WebDriver> edgeDriver = EdgeDriver::new;
 
-    private static final Map<String, Supplier<WebDriver>> driverMap = new HashMap<>();
+    private static final Map<String, Supplier<WebDriver>> driverMap = Map.of(
+            "Chrome", chromeDriver,
+            "Firefox", firefoxDriver,
+            "Edge", edgeDriver
+    );
 
-    static {
-        driverMap.put("Chrome", chromeDriver);
-        driverMap.put("Firefox", firefoxDriver);
-        driverMap.put("Edge", edgeDriver);
-    }
-
-    public static WebDriver getDriver(String browser){
+    public static WebDriver getDriver(String browser) {
         return driverMap.get(browser).get();
     }
 
