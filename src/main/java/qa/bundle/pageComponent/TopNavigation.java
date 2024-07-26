@@ -1,8 +1,8 @@
-package qa.design.srp.travel.pageComponents;
+package qa.bundle.pageComponent;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import qa.design.srp.travel.abstractComponent.Component;
+import qa.bundle.abstractComponent.Component;
 
 public class TopNavigation extends Component {
 

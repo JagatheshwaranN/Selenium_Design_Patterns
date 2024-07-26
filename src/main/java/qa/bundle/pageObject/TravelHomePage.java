@@ -1,9 +1,9 @@
-package qa.design.srp.travel.pageObject;
+package qa.bundle.pageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import qa.design.srp.travel.pageComponent.FooterNavigation;
-import qa.design.srp.travel.pageComponent.TopNavigation;
+import qa.bundle.pageComponent.FooterNavigation;
+import qa.bundle.pageComponent.TopNavigation;
 
 public class TravelHomePage {
 

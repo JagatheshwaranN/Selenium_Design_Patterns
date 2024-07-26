@@ -1,10 +1,10 @@
-package qa.design.srp.travel.pageComponents;
+package qa.design.srp.travel.pageComponent;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import qa.design.srp.travel.abstractComponent.Component;
 
-public class FooterNavigation extends Component {
+public class TopNavigation extends Component {
 
     WebDriver driver;
 
@@ -12,9 +12,8 @@ public class FooterNavigation extends Component {
 
     By links = By.cssSelector("a");
 
-
-    public FooterNavigation(WebDriver driver, By pageSectionElement) {
-        super(driver, pageSectionElement);
+    public TopNavigation(WebDriver driver, By locator) {
+        super(driver, locator);
         this.driver = driver;
     }
 
