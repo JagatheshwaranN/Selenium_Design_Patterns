@@ -1,9 +1,9 @@
-package qa.design.srp.home;
+package qa.design.srp.google.home;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import qa.design.srp.common.SearchSuggestion;
-import qa.design.srp.common.SearchWidget;
+import qa.design.srp.google.common.SearchSuggestion;
+import qa.design.srp.google.common.SearchWidget;
 
 public class GoogleHomePage {
 

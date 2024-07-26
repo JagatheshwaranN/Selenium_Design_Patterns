@@ -1,9 +1,9 @@
-package qa.design.srp.result;
+package qa.design.srp.google.result;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import qa.design.srp.base.DisplayComponent;
+import qa.design.srp.google.base.DisplayComponent;
 
 public class NavigationBar extends DisplayComponent {
 

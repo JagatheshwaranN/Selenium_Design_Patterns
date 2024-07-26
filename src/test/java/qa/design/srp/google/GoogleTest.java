@@ -1,11 +1,11 @@
-package qa.design.srp;
+package qa.design.srp.google;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import qa.design.srp.home.GoogleHomePage;
-import qa.design.srp.result.GoogleResultPage;
+import qa.design.srp.google.home.GoogleHomePage;
+import qa.design.srp.google.result.GoogleResultPage;
 import qa.design.test.BaseTest;
 
 public class GoogleTest extends BaseTest {

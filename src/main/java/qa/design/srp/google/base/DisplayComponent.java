@@ -1,4 +1,4 @@
-package qa.design.srp.base;
+package qa.design.srp.google.base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;

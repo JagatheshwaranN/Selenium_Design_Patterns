@@ -1,10 +1,10 @@
-package qa.design.srp.common;
+package qa.design.srp.google.common;
 
 import com.google.common.util.concurrent.Uninterruptibles;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import qa.design.srp.base.DisplayComponent;
+import qa.design.srp.google.base.DisplayComponent;
 
 import java.util.concurrent.TimeUnit;
 
