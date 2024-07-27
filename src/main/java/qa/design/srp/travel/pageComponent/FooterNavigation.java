@@ -8,9 +8,9 @@ public class FooterNavigation extends Component {
 
     WebDriver driver;
 
-    By flights = By.cssSelector("[title='Flights']");
+    private static final By flights = By.cssSelector("[title='Flights']");
 
-    By links = By.cssSelector("a");
+    private static final By links = By.cssSelector("a");
 
 
     public FooterNavigation(WebDriver driver, By pageSectionElement) {

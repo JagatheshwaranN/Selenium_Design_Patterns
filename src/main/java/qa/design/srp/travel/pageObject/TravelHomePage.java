@@ -9,9 +9,9 @@ public class TravelHomePage {
 
     WebDriver driver;
 
-    By topPageSectionElement = By.id("buttons");
+    private static final By topPageSectionElement = By.id("buttons");
 
-    By footerPageSectionElement = By.id("traveller-home");
+    private static final By footerPageSectionElement = By.id("traveller-home");
 
     public TravelHomePage(WebDriver driver) {
         this.driver = driver;
