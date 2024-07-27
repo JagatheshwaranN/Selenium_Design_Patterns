@@ -1,9 +1,9 @@
-package qa.design.execute_around;
+package qa.design.executeAround.frame;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class SecondFrame {
+public class ThirdFrame {
 
     @FindBy(name = "fn")
     private WebElement firstName;

@@ -1,4 +1,4 @@
-package qa.design.execute_around;
+package qa.design.executeAround.frame;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
