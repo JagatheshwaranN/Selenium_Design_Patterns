@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import qa.bundle.abstractComponent.Component;
 import qa.bundle.abstractComponent.ExploreFlight;
 
+import java.util.HashMap;
+import java.util.function.Consumer;
+
 public class MultiTrip extends Component implements ExploreFlight {
 
     private static final By multiTrip = By.id("ctl00_mainContent_rbtnl_Trip_2");
@@ -36,15 +39,20 @@ public class MultiTrip extends Component implements ExploreFlight {
     }
 
     @Override
-    public void inquireFlightAvailability(String origin, String destination) {
-        searchElement(multiTrip).click();
-        searchElement(multiTripModal).click();
-        selectOrigin1City(origin);
-        selectDestination1City(destination);
-        selectOrigin2City(origin);
-        selectDestination2City(destination);
+    public void inquireFlightAvailability(HashMap<String, String> travelDetail) {
+        makeMultiTripSectionReady(m -> selectOrigin1City(travelDetail.get("origin1")));
+        selectDestination1City(travelDetail.get("destination1"));
+        selectOrigin2City(travelDetail.get("origin2"));
+        selectDestination2City(travelDetail.get("destination2"));
         searchElement(studentCheckbox).click();
         searchElement(searchFlight).click();
+    }
+
+    public void makeMultiTripSectionReady(Consumer<MultiTrip> consumer) {
+        searchElement(multiTrip).click();
+        searchElement(multiTripModal).click();
+        waitForElementToDisappear(multiTripModal);
+        consumer.accept(this);
     }
 
     private void selectOrigin1City(String origin) {

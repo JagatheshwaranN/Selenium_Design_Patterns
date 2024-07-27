@@ -7,6 +7,8 @@ import qa.bundle.pageComponent.FooterNavigation;
 import qa.bundle.pageComponent.TopNavigation;
 import qa.bundle.abstractComponent.ExploreFlight;
 
+import java.util.HashMap;
+
 public class TravelHomePage {
 
     protected WebDriver driver;
@@ -40,8 +42,8 @@ public class TravelHomePage {
         this.exploreFlight = travelFactory.createTravelStrategy(driver, searchFlightContainer, travelType);
     }
 
-    public void inquireAvail(String origin, String destination) {
-        exploreFlight.inquireFlightAvailability(origin, destination);
+    public void inquireAvail(HashMap<String, String> travelDetail) {
+        exploreFlight.inquireFlightAvailability(travelDetail);
     }
 
 }

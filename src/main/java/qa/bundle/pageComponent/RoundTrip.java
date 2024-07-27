@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import qa.bundle.abstractComponent.Component;
 import qa.bundle.abstractComponent.ExploreFlight;
 
+import java.util.HashMap;
+import java.util.function.Consumer;
+
 public class RoundTrip extends Component implements ExploreFlight {
 
     private static final By roundTrip = By.id("ctl00_mainContent_rbtnl_Trip_1");
@@ -26,12 +29,16 @@ public class RoundTrip extends Component implements ExploreFlight {
     }
 
     @Override
-    public void inquireFlightAvailability(String origin, String destination) {
-        searchElement(roundTrip).click();
-        selectOriginCity(origin);
-        selectDestinationCity(destination);
+    public void inquireFlightAvailability(HashMap<String, String> travelDetail) {
+        makeRoundTripSectionReady(m -> selectOriginCity(travelDetail.get("origin1")));
+        selectDestinationCity(travelDetail.get("destination1"));
         searchElement(studentCheckbox).click();
         searchElement(searchFlight).click();
+    }
+
+    public void makeRoundTripSectionReady(Consumer<RoundTrip> consumer) {
+        searchElement(roundTrip).click();
+        consumer.accept(this);
     }
 
     private void selectOriginCity(String origin) {

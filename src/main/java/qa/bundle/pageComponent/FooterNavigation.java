@@ -20,7 +20,6 @@ public class FooterNavigation extends Component {
 
     public void searchFlight() {
         System.out.println(searchElement(flights).getAttribute("class"));
-        searchElement(flights).click();
     }
 
     public void getLinksCount() {

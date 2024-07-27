@@ -1,0 +1,14 @@
+[
+  {
+    "origin1":"MAA",
+    "destination1":"BLR",
+    "travelType":"roundTrip"
+  },
+  {
+    "origin1":"MAA",
+    "destination1":"HYD",
+    "origin2":"HYD",
+    "destination2":"BLR",
+    "travelType":"multiTrip"
+  }
+]
