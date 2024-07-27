@@ -1,19 +1,16 @@
 package qa.bundle.test;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import qa.bundle.pageComponent.RoundTrip;
 import qa.bundle.pageObject.TravelHomePage;
 
 public class TravellerTest {
 
     private WebDriver driver;
-
-    private static final By searchFlightContainer = By.id("flightSearchContainer");
 
     @BeforeTest
     public void setUp() {
@@ -21,16 +18,24 @@ public class TravellerTest {
         this.driver.manage().window().maximize();
     }
 
-    @Test
-    public void flightTest() {
+    @Test(dataProvider = "getData")
+    public void flightTest(String travelType, String origin, String destination) {
         TravelHomePage travelHomePage = new TravelHomePage(driver);
         travelHomePage.navigateTo();
         travelHomePage.getTopNavigation().searchFlight();
         travelHomePage.getFooterNavigation().searchFlight();
         travelHomePage.getTopNavigation().getLinksCount();
         travelHomePage.getFooterNavigation().getLinksCount();
-        travelHomePage.setFlightBookingType(new RoundTrip(driver, searchFlightContainer));
-        travelHomePage.inquireAvail("MAA", "BLR");
+        travelHomePage.setFlightBookingType(travelType);
+        travelHomePage.inquireAvail(origin, destination);
+    }
+
+    @DataProvider
+    public Object[][] getData() {
+        return new Object[][]{
+                {"roundTrip", "MAA", "BLR"},
+                {"multiTrip", "MAA", "BLR"},
+        };
     }
 
     @AfterTest

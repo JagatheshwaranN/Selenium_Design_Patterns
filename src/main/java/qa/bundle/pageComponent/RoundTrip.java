@@ -17,7 +17,7 @@ public class RoundTrip extends Component implements ExploreFlight {
 
     private static String destinationToSelect = "//div[@id='ctl00_mainContent_ddl_destinationStation1_CTNR']//a[@value='$']";
 
-    private static final By familyCheckbox = By.id("ctl00_mainContent_chk_friendsandfamily");
+    private static final By studentCheckbox = By.id("ctl00_mainContent_chk_StudentDiscount");
 
     private static final By searchFlight = By.id("ctl00_mainContent_btn_FindFlights");
 
@@ -30,7 +30,7 @@ public class RoundTrip extends Component implements ExploreFlight {
         searchElement(roundTrip).click();
         selectOriginCity(origin);
         selectDestinationCity(destination);
-        searchElement(familyCheckbox).click();
+        searchElement(studentCheckbox).click();
         searchElement(searchFlight).click();
     }
 

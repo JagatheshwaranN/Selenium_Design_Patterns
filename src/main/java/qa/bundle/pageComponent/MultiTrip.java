@@ -27,7 +27,7 @@ public class MultiTrip extends Component implements ExploreFlight {
 
     private static String destination2ToSelect = "//div[@id='ctl00_mainContent_ddl_destinationStation2_CTNR']//a[@value='$']";
 
-    private static final By familyCheckbox = By.id("ctl00_mainContent_chk_friendsandfamily");
+    private static final By studentCheckbox = By.id("ctl00_mainContent_chk_StudentDiscount");
 
     private static final By searchFlight = By.id("ctl00_mainContent_btn_FindFlights");
 
@@ -43,7 +43,7 @@ public class MultiTrip extends Component implements ExploreFlight {
         selectDestination1City(destination);
         selectOrigin2City(origin);
         selectDestination2City(destination);
-        searchElement(familyCheckbox).click();
+        searchElement(studentCheckbox).click();
         searchElement(searchFlight).click();
     }
 
