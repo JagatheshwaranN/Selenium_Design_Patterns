@@ -1,7 +1,7 @@
 package qa.design.strategy.travel.pageObject;
 
 import org.openqa.selenium.WebDriver;
-import qa.design.strategy.travel.component.ExploreFlight;
+import qa.design.strategy.travel.abstractComponent.ExploreFlight;
 
 public class TravelHomePage {
 

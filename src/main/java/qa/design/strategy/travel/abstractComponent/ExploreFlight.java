@@ -1,4 +1,4 @@
-package qa.design.strategy.travel.component;
+package qa.design.strategy.travel.abstractComponent;
 
 public interface ExploreFlight {
 

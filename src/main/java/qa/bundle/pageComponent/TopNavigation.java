@@ -19,7 +19,7 @@ public class TopNavigation extends Component {
 
     public void searchFlight() {
         System.out.println(searchElement(flights).getAttribute("class"));
-        //findElement(flights).click();
+        searchElement(flights).click();
     }
 
     public void getLinksCount() {

@@ -1,15 +1,19 @@
-package qa.bundle.travel;
+package qa.bundle.test;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import qa.design.srp.travel.pageObject.TravelHomePage;
+import qa.bundle.pageComponent.RoundTrip;
+import qa.bundle.pageObject.TravelHomePage;
 
 public class TravellerTest {
 
     private WebDriver driver;
+
+    private static final By searchFlightContainer = By.id("flightSearchContainer");
 
     @BeforeTest
     public void setUp() {
@@ -25,6 +29,8 @@ public class TravellerTest {
         travelHomePage.getFooterNavigation().searchFlight();
         travelHomePage.getTopNavigation().getLinksCount();
         travelHomePage.getFooterNavigation().getLinksCount();
+        travelHomePage.setFlightBookingType(new RoundTrip(driver, searchFlightContainer));
+        travelHomePage.inquireAvail("MAA", "BLR");
     }
 
     @AfterTest

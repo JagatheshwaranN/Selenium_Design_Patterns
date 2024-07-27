@@ -1,9 +1,9 @@
-package qa.design.strategy.travel.pageComponent;
+package qa.bundle.pageComponent;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import qa.design.strategy.travel.abstractComponent.Component;
-import qa.design.strategy.travel.abstractComponent.ExploreFlight;
+import qa.bundle.abstractComponent.Component;
+import qa.bundle.abstractComponent.ExploreFlight;
 
 public class RoundTrip extends Component implements ExploreFlight {
 
