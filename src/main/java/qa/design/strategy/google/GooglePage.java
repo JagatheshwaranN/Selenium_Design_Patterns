@@ -10,6 +10,7 @@ import java.util.List;
 public class GooglePage {
 
     protected WebDriver driver;
+
     protected SearchStrategy strategy;
 
     @FindBy(css = "div[class='yuRUbf'] h3")

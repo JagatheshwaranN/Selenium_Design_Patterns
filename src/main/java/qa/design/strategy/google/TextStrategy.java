@@ -4,7 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class TextStrategy implements SearchStrategy {
@@ -14,8 +17,8 @@ public class TextStrategy implements SearchStrategy {
     @FindBy(name= "q")
     private WebElement searchBox;
 
-    @FindBy(xpath = "//input[@name='btnK']")
-    private List<WebElement> searchButton;
+    @FindBy(xpath = "//div[@class='lJ9FBc']//input[@name='btnK']")
+    private WebElement searchButton;
 
     @Override
     public void setDriver(WebDriver driver) {
@@ -26,10 +29,8 @@ public class TextStrategy implements SearchStrategy {
     @Override
     public void search(String searchKeyword) {
         searchBox.sendKeys(searchKeyword);
-        searchButton.stream()
-                .filter(ele -> ele.isDisplayed() && ele.isEnabled())
-                .findFirst()
-                .ifPresent(WebElement::click);
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(searchButton));
+        searchButton.click();
     }
 
 }

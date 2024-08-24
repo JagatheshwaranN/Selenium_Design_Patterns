@@ -1,4 +1,4 @@
-package qa.design.strategy.google;
+package qa.design.strategy.google.driver;
 
 public enum WebDriverType {
     CHROME,

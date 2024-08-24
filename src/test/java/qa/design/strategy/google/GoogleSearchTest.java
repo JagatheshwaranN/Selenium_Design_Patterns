@@ -7,8 +7,10 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import qa.design.strategy.google.driver.DriverFactory;
+import qa.design.strategy.google.driver.WebDriverType;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 public class GoogleSearchTest {
 
@@ -21,11 +23,11 @@ public class GoogleSearchTest {
     }
 
     @Test(dataProvider = "fetchData")
-    public void googleSearchTest(SearchStrategy strategy, String keyword, int resultCount){
+    public void googleSearchTest(SearchStrategy strategy, String keyword, int resultCount) {
         GooglePage googlePage = new GooglePage(this.driver, strategy);
         googlePage.search(keyword);
         Assert.assertEquals(googlePage.getSearchResultCount(), resultCount);
-        Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
+        Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(5));
     }
 
     @AfterTest
@@ -36,7 +38,8 @@ public class GoogleSearchTest {
     @DataProvider
     public Object[][] fetchData(){
         return new Object[][]{
-                {new TextStrategy(), "Selenium", 11}
+                {new TextStrategy(), "Selenium", 11},
+                {new SpeechStrategy(), "will it rain tomorrow", 14}
         };
     }
 
