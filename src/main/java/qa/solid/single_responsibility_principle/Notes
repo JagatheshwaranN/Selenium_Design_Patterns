@@ -1,0 +1,35 @@
+SOLID Principles
+================
+1. Single Responsibility Principle
+==================================
+Every software component should have one and only one responsibility.
+
+Component can refer to a module / class / method.
+
+Cohesion is the degree to which the various parts of a software component are related.
+
+RealWorld Example: United Garbage bottles. Separated Garbage bottles.
+Code Example: Square Class
+
+Higher Cohesion helps attain better adherence to the Single Responsibility Principle.
+
+Coupling is defined as the level of inter dependency between various software components.
+
+RealWorld Example: Meter gauge and Broad gauge railway tracks.
+Code Example: Student Class
+
+Loose Coupling helps attain better adherence to the Single Responsibility Principle.
+
+Change of Phrase
+================
+Every software component should have one and only one reason to change.
+
+Let us take the previous Student class example. Let's analyze what are the reasons that
+could come up to change the Student class.
+
+Reason to Change
+================
+1. A change in the student id format.
+2. A change in the student name format.
+3. A change in the student database backend, as advised by technical team.
+

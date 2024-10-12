@@ -1,0 +1,44 @@
+SOLID Principles
+================
+2. Open Closed Principle
+========================
+Software components should be closed for modifications, but open for extension.
+
+RealWorld Example: WII Gaming Console, Remote along with Japper Gun and Steering Wheel.
+
+Closed for Modification
+=======================
+New features getting added to the software component should NOT have to modify existing code.
+
+Open for Extension
+==================
+A software component should be extendable to add a new feature or to add a new behaviour to it.
+
+Code Example: One State Insurance - For all your health insurance needs!
+InsurancePremiumDiscountCalculator() method - It takes Health Insurance Customer Profile as input.
+
+Let says One State Insurance company has acquired a insurance company which deals with Vehicle.
+So, its changed their tag line to - For all your health and vehicle insurance needs!
+
+So, the problem comes, as we need to calculate the premium for Vehicle insurance customers too.
+Easy way comes to mind is to create a overloaded method.
+
+The real problem here, is what if suppose tomorrow One State acquire Home insurance company?
+We can't keep overload the premium calculator method, right?
+
+Solution - To have a Common Interface as Customer Profile and make all the Health, Vehicle, and
+Home Customers class to implement the interface. Also, pass the Customer profile as input to
+premium calculator method.
+
+Key Takeaways
+=============
+1. Ease of adding new features.
+2. Leads to minimum cost of developing and testing software.
+3. Open Closed Principle often requires decoupling, which in turn, automatically follows the Single
+   Responsibility Principle.
+
+Caution
+=======
+1. Do not follow the Open Closed Principle blindly.
+2. You will end up with a huge number of classes that can complicate your overall design.
+3. Make a subjective, rather than an objective decision.
