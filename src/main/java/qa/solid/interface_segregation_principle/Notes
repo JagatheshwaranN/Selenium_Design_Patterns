@@ -1,0 +1,55 @@
+SOLID Principles
+================
+4. Interface Segregation Principle
+==================================
+No client should be forced to depend on methods it does not use.
+
+RealWorld Example: Xerox WorkCenter / HP Printer / Canon Printer
+
+Let's assume in our office workplace, we have to take print / scan / photocopy. To do this,
+we have either separate machine which do all activities separately otherwise we may have
+the collective machine which can do all the operations.
+
+Xerox WorkCenter is capable of doing the print / scan / taking photocopy / fax. So, Lets
+convert it into a code. The code will be interface with name IMultiFunction. The interface
+can have different methods correspond to different operations. Those are as below,
+print(), getPrintSpoolDetails(), scan(), scanPhoto(), fax(), and internetFax().
+
+Now, Xerox WorkCenter class can implement the IMultiFunction interface as it do all the
+operations mentioned in the IMultiFunction.
+
+Let's have HP Printer class can implement the IMultiFunction interface. But, HP Printer
+class can do scan and print. So, the fax related methods can be overriden and unimplemented.
+
+Let's have Canon Printer class can implement the IMultiFunction interface. But, Canon Printer
+class can do print. So, the scan and fax related methods can be overriden and unimplemented.
+
+Here, the ISP fails as the Objects are enforced to use methods which its doesn't depends on.
+Also, the design looks not good as it has unimplemented methods.
+
+The solution is to split the interface IMultiFunction into multiple interfaces. Here, the
+IMultiFunction interface is divided into IPrint, IScan, and IFax interfaces.
+
+The IPrint has print(), and getPrintSpoolDetails() methods.
+The IScan has scan(), and scanPhoto() methods.
+The IFax has fax(), and internetFax() methods.
+
+So, now, the Xerox WorkCenter class can implement IPrint, IScan and IFax interfaces.
+The HP Printer class can implement IPrint, and IScan interfaces.
+The Canon Printer class can implement IPrint interface.
+
+Techniques to identify violations of ISP
+========================================
+1. Fat Interfaces means the interfaces with high number of methods.
+Lets take the same IMultiFunction interface which has 6 methods.
+
+2. Interfaces with Low Cohesion.
+Lets take the same IMultiFunction interface, where we have fax() and scanPhoto() method. These
+two operations not related to each other.
+
+3. Empty Method Implementations.
+Lets take the HP Printer and Canon Printer classes which has unimplemented methods which has
+violated the ISP.
+
+SOLID principles complement each other, and work together in unison, to achieve the common purpose
+of well-designed software.
