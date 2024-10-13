@@ -8,7 +8,7 @@ Component can refer to a module / class / method.
 
 Cohesion is the degree to which the various parts of a software component are related.
 
-RealWorld Example: United Garbage bottles. Separated Garbage bottles.
+RealWorld Example: Mixed Garbage bottles. Separated Garbage bottles.
 Code Example: Square Class
 
 Higher Cohesion helps attain better adherence to the Single Responsibility Principle.

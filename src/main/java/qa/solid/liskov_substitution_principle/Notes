@@ -1,0 +1,66 @@
+SOLID Principles
+================
+3. Liskov Substitution Principle
+================================
+Objects should be replaceable with their subtypes without affecting the correctness of the program.
+
+Change the 'IS-A' way of thinking
+=================================
+If it looks like Duck and quacks like a duck but it needs batteries, you probably have the wrong
+abstraction.
+
+The Liskov way of thinking
+==========================
+Objects should be replaceable with their subtypes without affecting the correctness of the program.
+
+RealWorld Example: Racing Car extends Car
+
+Here, on high level we don't see any problem. But, when look deep, we can see the issue lies in it.
+
+CodeExample - 1: Car and Racing Car
+Let say we have getCabinetWith() in car which gives car's interior size, when it has been inherited
+by Racing Car class, it overrides the getCabinetWith() method and leave it unimplemented. Because,
+the Racing Car doesn't have a cabinet inside it. Instead it has the cockpit.So, it has the method
+getCockpitWith(), this can be called by Racing Car. When we call normal Car's getCabinetWith() method
+it should work fine whereas Racing Car's getCabinetWith() will not work as it has unimplemented method.
+
+So, this is the design hole which has been exposed. To fix this we have strike the root which means
+we have break the Inheritance.
+
+Solution
+========
+1. Break the hierarchy if it fails the Substitution test.
+=========================================================
+We have create a new class called Vehicle which is generic class. And now we need both Car and Racing Car
+class to extends the Vehicle class.
+
+We will have Vehicle class with getInteriorWidth() method. So, now it can be extended by both Car types.
+So, both Car types class overrides the getInteriorWidth() method. Here, the Car class getInteriorWidth()
+will in turn call getCabinetWith() and Racing Car class getInteriorWidth() will in turn call getCockpitWith().
+
+
+CodeExample - 2: Product and InHouse Product
+Ley say we have Product class and InHouseProduct class which extends Product class. The Product class has
+getDiscount(). InHouseProduct class has applyExtraDiscount() method. Now, if we have PricingUtil class
+which takes Product & InHouseProduct into List. When iterate over the list, we need to check the product
+is type of InHouseProduct for applying extra discount and we need to typecast to achieve this, otherwise
+we can apply discount for Product.
+
+Now, we need to modify the code to fix the typecast issue.
+
+Solution
+========
+2. Tell, Don't Ask
+==================
+We are going to override the getDiscount() method of Product class in InHouseProduct class and the
+getDiscount() in turn will call applyExtraDiscount() method. This way, we are able to make changes
+without affecting the functionality. Also, when we add the Product and InHouseProduct instances to
+list and iterate, it should work. The on each iteration getDiscount() will be called. This time, we
+didn't need any typecast things as the code works well with getDiscount() method. When the product
+is InHouseProduct, the getDiscount() method will in turn call applyExtraDiscount() method.
+
+So, here, the subtype InHouseProduct is successfully used in place of Product class.
+
+
+
+
