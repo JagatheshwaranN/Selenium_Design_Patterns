@@ -1,0 +1,69 @@
+SOLID Principles
+================
+5. Dependency Inversion/Injection Principle
+===========================================
+High level modules should not depend on low level modules. Both should depend on abstractions.
+
+Abstractions should not depend on details. Details should depend on abstractions.
+
+RealWorld Example: An Ecommerce Application
+
+Lets consider an ecommerce application which has 3 high level modules as below.
+1. Product Catalog
+2. Payment Processor
+3. Customer Profile
+
+We have below low level modules.
+1. SQLProductRepository
+2. GooglePay Gateway
+3. Wire Transfer
+4. Communication
+5. EmailSender
+6. VoiceDialer
+
+The High level module depends on the Low level modules.
+1. Product Catalog depends on SQLProductRepository.
+2. Payment Processor depends on GooglePay and Wire Transfer.
+3. Customer Profile depends on Communication. Communication depends on EmailSender and VoiceDialer.
+
+Lets take out Product Catalog scenario alone. Let us consider a code for the same.
+We have a class called SQLProductRepository and which has a method getAllProductNames(). It returns
+the all available product names from Database.
+
+The ProductCatalog class has a method listAllProducts(). Inside it has the SQLProductRepository object
+and it calls the getAllProductNames() method of SQLProductRepository using the object. Here, it clearly
+seen that it violates the DIP.
+
+We can fix it by following the DIP.
+
+Let's create a abstract component which is as ProductRepository interface. It has a method called
+getAllProductNames(). Now, the SQLProductRepository class implements the ProductRepository interface
+and provides the implementation for the getAllProductNames() method.
+
+Now, one portion is completed. But still the instance of the SQLProductRepository is needed to access
+the getAllProductNames() method. For, that we are going to use the Factory pattern.
+
+We will have a ProductFactory class. It will have the method called create() whose return type is
+ProductRepository and it will be used to create the object of SQLProductRepository class.
+
+Now, we can modify the ProductCatalog class's listAllProducts() method. Now, it can use ProductRepository
+instance to get the object of SQLProductRepository indirectly by this the dependency is removed. Also,
+by using the instance we can call the getAllProductNames() method of SQLProductRepository.
+
+Now, both the ProductCatalog and SQLProductRepository modules depends on the ProductRepository interface.
+It follows the DIP.
+
+Now, whatever we have discussed so far is called as Dependency Inversion Principle. Now, lets see what is
+Dependency Injection.
+
+For this, we can take the previous example from where we left. Now, we will modify the ProductCatalog class
+to have the Constructor and inside it we are going to take the instance of ProductRepository interface.
+
+Also, we will have a new main class which will be used to call the ProductCatalog class. Before invoking
+the ProductCatalog class, the main class will create the ProductRepository instance by calling the create()
+method, and pass on the instance as an param to the ProductCatalog constructor. This way we are injecting
+the dependency into the ProductCatalog class.
+
+
+
+

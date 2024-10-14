@@ -15,16 +15,16 @@ Objects should be replaceable with their subtypes without affecting the correctn
 
 RealWorld Example: Racing Car extends Car
 
-Here, on high level we don't see any problem. But, when look deep, we can see the issue lies in it.
+Here, on high level we don't see any problem. But, when we look deep, we can see the issue lies in it.
 
 CodeExample - 1: Car and Racing Car
-Let say we have getCabinetWith() in car which gives car's interior size, when it has been inherited
-by Racing Car class, it overrides the getCabinetWith() method and leave it unimplemented. Because,
-the Racing Car doesn't have a cabinet inside it. Instead it has the cockpit.So, it has the method
-getCockpitWith(), this can be called by Racing Car. When we call normal Car's getCabinetWith() method
-it should work fine whereas Racing Car's getCabinetWith() will not work as it has unimplemented method.
+Let say we have getCabinetWidth() in car which gives car's interior size, when it has been inherited
+by Racing Car class, it overrides the getCabinetWidth() method and leave it unimplemented. Because,
+the Racing Car doesn't have a cabinet inside it. Instead it has the cockpit. So, it has the method
+getCockpitWidth(), this can be called by Racing Car. When we call normal Car's getCabinetWidth() method
+it should work fine whereas Racing Car's getCabinetWidth() will not work as it has unimplemented method.
 
-So, this is the design hole which has been exposed. To fix this we have strike the root which means
+So, this is the design hole which has been exposed. To fix this we have to strike the root which means
 we have break the Inheritance.
 
 Solution
@@ -36,7 +36,7 @@ class to extends the Vehicle class.
 
 We will have Vehicle class with getInteriorWidth() method. So, now it can be extended by both Car types.
 So, both Car types class overrides the getInteriorWidth() method. Here, the Car class getInteriorWidth()
-will in turn call getCabinetWith() and Racing Car class getInteriorWidth() will in turn call getCockpitWith().
+will in turn call getCabinetWidth() and Racing Car class getInteriorWidth() will in turn call getCockpitWidth().
 
 
 CodeExample - 2: Product and InHouse Product
@@ -55,7 +55,7 @@ Solution
 We are going to override the getDiscount() method of Product class in InHouseProduct class and the
 getDiscount() in turn will call applyExtraDiscount() method. This way, we are able to make changes
 without affecting the functionality. Also, when we add the Product and InHouseProduct instances to
-list and iterate, it should work. The on each iteration getDiscount() will be called. This time, we
+list and iterate, it should work. Then on each iteration getDiscount() will be called. This time, we
 didn't need any typecast things as the code works well with getDiscount() method. When the product
 is InHouseProduct, the getDiscount() method will in turn call applyExtraDiscount() method.
 

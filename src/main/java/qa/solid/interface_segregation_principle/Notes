@@ -19,10 +19,10 @@ Now, Xerox WorkCenter class can implement the IMultiFunction interface as it do 
 operations mentioned in the IMultiFunction.
 
 Let's have HP Printer class can implement the IMultiFunction interface. But, HP Printer
-class can do scan and print. So, the fax related methods can be overriden and unimplemented.
+class can do scan and print. So, the fax related methods can be overridden and unimplemented.
 
 Let's have Canon Printer class can implement the IMultiFunction interface. But, Canon Printer
-class can do print. So, the scan and fax related methods can be overriden and unimplemented.
+class can do print. So, the scan and fax related methods can be overridden and unimplemented.
 
 Here, the ISP fails as the Objects are enforced to use methods which its doesn't depends on.
 Also, the design looks not good as it has unimplemented methods.
@@ -41,15 +41,15 @@ The Canon Printer class can implement IPrint interface.
 Techniques to identify violations of ISP
 ========================================
 1. Fat Interfaces means the interfaces with high number of methods.
-Lets take the same IMultiFunction interface which has 6 methods.
+Example: Lets take the same IMultiFunction interface which has 6 methods.
 
 2. Interfaces with Low Cohesion.
-Lets take the same IMultiFunction interface, where we have fax() and scanPhoto() method. These
-two operations not related to each other.
+Example: Lets take the same IMultiFunction interface, where we have fax() and scanPhoto() method.
+These two operations not related to each other.
 
 3. Empty Method Implementations.
-Lets take the HP Printer and Canon Printer classes which has unimplemented methods which has
-violated the ISP.
+Example: Lets take the HP Printer and Canon Printer classes which has unimplemented methods which
+has violated the ISP.
 
 SOLID principles complement each other, and work together in unison, to achieve the common purpose
 of well-designed software.
